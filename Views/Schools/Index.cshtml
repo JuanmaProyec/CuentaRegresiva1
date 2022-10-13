@@ -1,0 +1,40 @@
+﻿@model IEnumerable<CuentaRegresiva.Models.School>
+
+@{
+    ViewData["Title"] = "Listado de escuelas";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Agregar escuela</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                Acciones
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var school in Model) 
+    {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => school.Name)
+                </td>
+                <td>
+                    <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@school.Id">
+                        <i class="fa fa-edit"></i>
+                    </a> |
+                    <a asp-action="Details" asp-route-id="@school.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@school.Id">Delete</a>
+                </td>
+            </tr>
+    }
+    </tbody>
+</table>
